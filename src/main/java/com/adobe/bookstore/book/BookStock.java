@@ -1,4 +1,4 @@
-package com.adobe.bookstore;
+package com.adobe.bookstore.book;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 

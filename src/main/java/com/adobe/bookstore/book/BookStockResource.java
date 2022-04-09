@@ -1,4 +1,4 @@
-package com.adobe.bookstore;
+package com.adobe.bookstore.book;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

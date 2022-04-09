@@ -9,6 +9,8 @@ import org.springframework.test.context.jdbc.Sql;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.adobe.bookstore.book.BookStock;
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class BookStockResourceTest {
 
