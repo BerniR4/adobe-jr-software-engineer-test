@@ -1,6 +1,6 @@
 package com.adobe.bookstore.order;
 
-import java.util.Set;
+import java.util.List;
 import java.util.UUID;
 
 import javax.persistence.CascadeType;
@@ -26,11 +26,11 @@ public class Order {
     private boolean status;
 
     @OneToMany(cascade = CascadeType.ALL)
-    private Set<BookOrder> bookOrders;
+    private List<BookOrder> bookOrders;
     
     private Order(){}
 
-    public Order(Set<BookOrder> bookOrders, boolean status) {
+    public Order(List<BookOrder> bookOrders, boolean status) {
         this.id = UUID.randomUUID().toString();
         this.bookOrders = bookOrders;
         this.status = status;
@@ -40,11 +40,11 @@ public class Order {
         return this.id;
     }
 
-    public boolean getSatus() {
+    public boolean getStatus() {
         return this.status;
     }
 
-    public Set<BookOrder> getAllBookOrders() {
+    public List<BookOrder> getAllBookOrders() {
         return this.bookOrders;
     }
 }

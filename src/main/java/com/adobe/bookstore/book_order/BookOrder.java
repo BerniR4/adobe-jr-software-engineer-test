@@ -44,4 +44,8 @@ public class BookOrder {
     public void setOrder(Order order) {
         this.order = order;
     }
+
+    public void addHowMany(int n) {
+        this.howMany += n;
+    }
 }
