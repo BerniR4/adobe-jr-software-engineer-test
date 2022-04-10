@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
@@ -18,24 +20,34 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @Entity
 @Table(name = "book_order")
 @JsonSerialize
-@IdClass(BookOrderId.class)
 public class BookOrder {
     
     @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Long id;
+    
     @ManyToOne
     @JoinColumn(name = "book_stock_id", referencedColumnName = "id")
     @JsonProperty("book")
     private BookStock book;
     
-    @Id
+    /*@Id
     @ManyToOne
     @JoinColumn(name = "order_id", referencedColumnName = "id")
-    private Order order;
+    private Order order;*/
 
     @Column(name = "how_many", nullable = false)
     private int howMany;
  
-    public String bookId() {
+    // public void setOrder(Order order) {
+    //     this.order = order;
+    // }
+
+    public String getBookId() {
         return book.getId();
+    }
+
+    public int getHowMany() {
+        return howMany;
     }
 }

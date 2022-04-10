@@ -27,7 +27,7 @@ public class Order {
     @Column(name = "status", nullable = false)
     private boolean status;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<BookOrder> bookOrders;
     
     private Order(){}
@@ -40,5 +40,13 @@ public class Order {
 
     public String getId() {
         return this.id;
+    }
+
+    public boolean getSatus() {
+        return this.status;
+    }
+
+    public List<BookOrder> getAllBookOrders() {
+        return this.bookOrders;
     }
 }
