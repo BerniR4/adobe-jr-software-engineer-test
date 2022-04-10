@@ -1,12 +1,9 @@
 package com.adobe.bookstore.order;
 
 import java.util.List;
+import java.util.Set;
 
-import javax.persistence.EntityManager;
-
-import com.adobe.bookstore.book.BookStock;
 import com.adobe.bookstore.book_order.BookOrder;
-import com.adobe.bookstore.book_order.BookOrderRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderResource {
 
     private OrderRepository orderRepository;
-    private BookOrderRepository bookOrderRepository;
 
     @Autowired
     public OrderResource(OrderRepository orderRepository) {
@@ -41,9 +37,12 @@ public class OrderResource {
     }
     
     @PostMapping("order")
-    public String newOrder(@RequestBody List<BookOrder> requestedBooks) {
+    public String newOrder(@RequestBody Set<BookOrder> requestedBooks) {
         Order order = new Order(requestedBooks, true);
+        for (BookOrder bookOrder : requestedBooks) {
+            bookOrder.setOrder(order);
+        }
         orderRepository.save(order);
-        return requestedBooks.get(0).getBookId() + "   " + requestedBooks.get(0).getHowMany();
+        return order.getId();
     }
 }
