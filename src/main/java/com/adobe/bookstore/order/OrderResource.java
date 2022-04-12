@@ -48,7 +48,7 @@ public class OrderResource {
         fixDuplicate(requestedBooks);
 
         if (!checkStock(requestedBooks))
-            return "Order failed: not enough stock";
+            return "Order failed";
         
         Order order = new Order(requestedBooks, false);
         for (BookOrder bookOrder : requestedBooks) {
@@ -67,7 +67,7 @@ public class OrderResource {
             BookStock bs = bookStockRepository.findById(bookOrder.getBookId()).orElse(null);
             if (null == bs) 
                 return false;
-            if (bookOrder.getHowMany() > bs.getQuantity())
+            if (bookOrder.getHowMany() > bs.getQuantity() || bookOrder.getHowMany() < 0)
                 return false;
         }
         return true;

@@ -18,7 +18,6 @@ public class AsyncHelper {
 
     @Async
     public void updateStock(Order order) throws InterruptedException{
-        Thread.sleep(50000L);
 
         for (int i = 0; i < order.getAllBookOrders().size(); i++) {
             String bookId = order.getAllBookOrders().get(i).getBookId();
