@@ -33,6 +33,13 @@ public class BookOrder {
     @Column(name = "how_many", nullable = false)
     private int howMany;
 
+    private BookOrder(){}
+
+    public BookOrder(BookStock book, int howMany){
+        this.book = book;
+        this.howMany = howMany;
+    }
+
     public String getBookId() {
         return book.getId();
     }

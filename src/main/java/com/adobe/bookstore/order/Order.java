@@ -47,4 +47,8 @@ public class Order {
     public List<BookOrder> getAllBookOrders() {
         return this.bookOrders;
     }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
 }
